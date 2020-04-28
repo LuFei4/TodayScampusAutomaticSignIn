@@ -46,19 +46,23 @@ kl.disableKeyguard()的方法我去android API了解了一下，
 他其实并不是解锁屏幕，而是把锁屏功能给禁用了。  
 锁屏界面其实就是一个activity  
 CSDN很多博主都说disableKeyguard()是解锁方法，其实这个是大错特错！  
-通过disableKeyguard()我们就可以实现在锁屏中显示我们的app（需要打开app的【锁屏显示】权限），  
-但是disableKeyguard()有个很严重的问题就是，使用此方法会禁用手机home键、菜单键、以及返回键。  
+通过disableKeyguard()我们就可以实现在锁屏中显示我们的app，  
+但是disableKeyguard()有个很严重的问题就是，  
+使用此方法会禁用手机home键、菜单键、以及返回键。  
 为什么呢？因为谷歌担心你在使用此方法禁用锁屏界面时，绕过锁屏去触犯用户的隐私，  
 所以上滑解锁其实也阻碍了很多APP绕过解锁去执行一些违规操作，  
 但是他万万没想到我是谁？长师界的Jon Skeet(国外很火的一个编程大神).
 不好意思ヽ(≧□≦)ノ我这个人太自恋了。。。
 
 ### 我竟然发现了android一个奇怪的漏洞：  
-我们让app通过BroadcastReceiver自动唤醒手机以后禁用解锁，然后拉活我的app软件加载到主界面中，  
-主界面跳转到第三方今日校园app，今日校园完成一系列自动签到后是无法返回到home主界面的，  
+我们让app通过BroadcastReceiver自动唤醒手机以后禁用解锁，
+然后拉活我的app软件加载到主界面中，  
+主界面跳转到第三方今日校园app，  
+今日校园完成一系列自动签到后是无法返回到home主界面的，  
 因为home键是被disableKeyguard()方法给禁用了，怎么办了？我又是翻遍了整个互联网，  
 正当千钧一发之际，我脑袋里突然来了灵感，AccessibilityService不是有那个模拟的全局home键吗？  
-他可不可以绕过disableKeyguard()去打开home呢？说时迟那时快，吭吭吭代码就已经打上去了，  
+他可不可以绕过disableKeyguard()去打开home呢？  
+说时迟那时快，吭吭吭代码就已经打上去了。  
 ```
 AccessibilityService的GLOBAL_ACTION_HOME  
 ```
