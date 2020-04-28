@@ -71,9 +71,11 @@ CSDN很多博主都说disableKeyguard()是解锁方法，其实这个是大错�
 AccessibilityService不是有那个模拟的全局home键吗？  
 他可不可以绕过disableKeyguard()去打开home呢？  
 说时迟那时快，吭吭吭代码就已经打上去了。  
+
 ```
 AccessibilityService的GLOBAL_ACTION_HOME  
 ```
+
 这个方法竟然能真的绕过disableKeyguard()去模拟home并回到主界面！  
 最神奇的还不是这个，第二天我闹钟响了，因为闹钟是在锁屏时显示的，  
 当时我睡意朦胧打开手机尽然发现锁屏闹钟不见了，只有锁屏界面和闹钟的声音，  
