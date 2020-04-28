@@ -37,6 +37,7 @@ KeyguardManager.KeyguardLock kl = km.newKeyguardLock("unLock");
 //解锁
 kl.disableKeyguard();
 ```
+
 kl.disableKeyguard()的方法我去android API了解了一下， 
 他其实并不是解锁屏幕，而是把锁屏功能给禁用了。 
 锁屏界面其实就是一个activity 
