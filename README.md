@@ -42,7 +42,13 @@ kl.disableKeyguard()的方法我去android API了解了一下，
 锁屏界面其实就是一个activity
 CSDN很多博主都说disableKeyguard()是解锁方法，其实这个是大错特错！
 通过disableKeyguard()我们就可以实现在锁屏中显示我们的app（需要打开app的【锁屏显示】权限），
-但是disableKeyguard()有个很明显的问题就是，在
+但是disableKeyguard()有个很严重的问题就是，使用此方法会禁用手机home键、菜单键、以及返回键。
+为什么呢？因为谷歌担心你在使用此方法禁用锁屏界面时，绕过锁屏去触犯用户的隐私，
+所以上滑解锁其实也阻碍了很多APP绕过解锁去执行一些违规操作，
+但是他万万没想到我是谁？长师界的Jon Skeet(国外很火的一个编程大神)，我尽然
+我们让app自动唤醒手机以后解锁
+
+
 
 km.newKeyguardLock("unLock");这一段代码也被android废弃了，我们先不管这一行代码。
 
